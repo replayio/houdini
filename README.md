@@ -3,6 +3,7 @@
 
   <br />
   <br />
+  <br />
 
   <strong>
     The disappearing GraphQL client for Sapper and SvelteKit.
