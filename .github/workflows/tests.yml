@@ -108,7 +108,7 @@ jobs:
               if: ${{ always() }}
 
             - name: Upload Replays
-              uses: replayio/action-upload@v0.4.1
+              uses: replayio/action-upload@v0.4.3
               if: ${{ always() }}
               with:
                   public: true
