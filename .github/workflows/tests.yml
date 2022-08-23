@@ -54,4 +54,4 @@ jobs:
               if: ${{ always() }}
               with:
                   public: true
-                  api-key: rwk_rU0zn3HTo6ln30JdS6QCVJNcuxld0nyWNsN1RhKgt3y
+                  api-key: rwk_g71tMnDQgBWdrDO62bDmaxwqP1W4b2XKyHEnQg65reZ
