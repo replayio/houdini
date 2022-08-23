@@ -1,7 +1,7 @@
 ## Links
 
--   [Team invitation](https://app.replay.io/team/invitation?code=fa2d5117-af4e-4e86-8e4a-a06252aba7f2)
--   [Link to team](https://app.replay.io/team/dzo1NmFhYzRhYi03MWM5LTRlY2ItYWViYy0xMjUxN2Q5NDE5ZmQ=/runs)
+-   [Team invitation](https://app.replay.io/team/invitation?code=09104487-5e9f-4ec4-aa3a-3034b5bbf38e)
+-   [Link to team](https://app.replay.io/team/dzo1MDQ3NmY1YS1mM2M4LTRmNTYtYWUxYy05ZjFhYTcxZjdhNjM=/recordings)
 
 ## Instructions
 
