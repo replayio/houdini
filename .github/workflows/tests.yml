@@ -6,51 +6,102 @@ on:
   workflow_dispatch:
 
 jobs:
-    integration:
-        name: Integration Tests
-        runs-on: ubuntu-latest
-        strategy:
-          fail-fast: false
-          matrix:
-            record: ["record", "no-record"]
+  playwright-record:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref }}
 
-        steps:
-            - name: Checkout source
-              uses: actions/checkout@v3
-              with:
-                  ref: ${{ github.ref }}
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          cache: 'yarn'
+          node-version: 16.14.2
 
-            - name: Setup Node
-              uses: actions/setup-node@v3
-              with:
-                  cache: 'yarn'
-                  node-version: 16.14.2
+      - name: Install dependencies
+        run: yarn install --immutable
+        env:
+          YARN_ENABLE_IMMUTABLE_INSTALLS: false
 
-            - name: Install dependencies
-              run: yarn install --immutable
-              env:
-                  YARN_ENABLE_IMMUTABLE_INSTALLS: false
+      - name: Build packages
+        run: yarn build
 
-            - name: Build packages
-              run: yarn build
+      - name: Install Playwright
+        run: npx playwright install --with-deps && npx @replayio/playwright install
 
-            - name: Install Playwright
-              run: npx playwright install --with-deps && npx @replayio/playwright install
+      - name: Integration Tests
+        run: yarn workspace integration tests:replay
+        env:
+          RECORD_REPLAY_TEST_METRICS: 1
+          RECORD_REPLAY_WEBHOOK_URL: ${{ secrets.RECORD_REPLAY_WEBHOOK_URL }}
 
-            - name: Integration Tests
-              run: yarn workspace integration tests:replay
-              env:
-                RECORD_REPLAY_NO_RECORD: ${{ matrix.record == 'no-record' && '1' || '' }}
-                RECORD_REPLAY_TEST_METRICS: 1
-                RECORD_REPLAY_WEBHOOK_URL: ${{ secrets.RECORD_REPLAY_WEBHOOK_URL }}
+      - name: Upload Replays
+        uses: replayio/action-upload@v0.4.3
+        if: ${{ always() }}
+        with:
+          public: true
+          api-key: rwk_E7cBJRWfqVj1PedMiDiBdvfBcVTTxyPRAsQFuHwDv24
+  playwright-no-record:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref }}
 
-            - name: List replays
-              run: npx @replayio/replay ls
-              if: ${{ always() }}
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          cache: 'yarn'
+          node-version: 16.14.2
 
-            - name: Upload Replays
-              uses: replayio/action-upload@v0.4.3
-              if: ${{ always() }}
-              with:
-                  public: true
-                  api-key: rwk_E7cBJRWfqVj1PedMiDiBdvfBcVTTxyPRAsQFuHwDv24
+      - name: Install dependencies
+        run: yarn install --immutable
+        env:
+          YARN_ENABLE_IMMUTABLE_INSTALLS: false
+
+      - name: Build packages
+        run: yarn build
+
+      - name: Install Playwright
+        run: npx playwright install --with-deps && npx @replayio/playwright install
+
+      - name: Integration Tests
+        run: yarn workspace integration tests:replay
+        env:
+          RECORD_REPLAY_NO_RECORD: 1
+          RECORD_REPLAY_TEST_METRICS: 1
+          RECORD_REPLAY_WEBHOOK_URL: ${{ secrets.RECORD_REPLAY_WEBHOOK_URL }}
+  playwright-original:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          cache: 'yarn'
+          node-version: 16.14.2
+
+      - name: Install dependencies
+        run: yarn install --immutable
+        env:
+          YARN_ENABLE_IMMUTABLE_INSTALLS: false
+
+      - name: Build packages
+        run: yarn build
+
+      - name: Install Playwright
+        run: npx playwright install --with-deps
+
+      - name: Integration Tests
+        run: yarn workspace integration tests
+        env:
+          RECORD_REPLAY_NO_RECORD: 1
+          RECORD_REPLAY_TEST_METRICS: 1
+          RECORD_REPLAY_WEBHOOK_URL: ${{ secrets.RECORD_REPLAY_WEBHOOK_URL }}
