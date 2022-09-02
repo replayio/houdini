@@ -2200,24 +2200,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@replayio/playwright@npm:^0.2.24":
-  version: 0.2.24
-  resolution: "@replayio/playwright@npm:0.2.24"
+"@replayio/playwright@npm:^0.2.25":
+  version: 0.2.25
+  resolution: "@replayio/playwright@npm:0.2.25"
   dependencies:
-    "@replayio/replay": ^0.9.4
-    "@replayio/test-utils": ^0.1.0
+    "@replayio/replay": ^0.9.5
+    "@replayio/test-utils": ^0.1.1
     uuid: ^8.3.2
   peerDependencies:
     "@playwright/test": 1.19.x
   bin:
     replayio-playwright: bin/replayio-playwright.js
-  checksum: 1ac3c8d9727cf568a8e0042829e57537458f39e6f8a84559b9512529e01923211e97ba72a96c7339ab1729707932cbc19e0b9cd103d9c34eee04042b28b40e30
+  checksum: 382f0457ee9d8cfc0e8c9c8d6a32e40cf3b6fc685a142ac780088b0d0b209bb346f96dc77fa7323f9fb36bcaca908bb97d2e37c0789938db40ce560bb39ca324
   languageName: node
   linkType: hard
 
-"@replayio/replay@npm:^0.9.4":
-  version: 0.9.4
-  resolution: "@replayio/replay@npm:0.9.4"
+"@replayio/replay@npm:^0.9.5":
+  version: 0.9.5
+  resolution: "@replayio/replay@npm:0.9.5"
   dependencies:
     "@replayio/sourcemap-upload": ^1.0.3
     commander: ^7.2.0
@@ -2228,7 +2228,7 @@ __metadata:
     ws: ^7.5.0
   bin:
     replay: bin/replay.js
-  checksum: a1b9ce3e15922b040e0aaa21b95d61a856b0cf7bc9b9d74a0e0dc8387d9ed1cfa1329f5a880ad7e55fd5af35df3dacd429bc4adfa1ff3cf0f280b7378458c849
+  checksum: 53a9b34f713275d72ab7bd77c831d68732489412651c032274a723f2794e109cf38c0631453b080a602b30e49885c3892e544af07c6d3a777b236da4dbdf58da
   languageName: node
   linkType: hard
 
@@ -2245,14 +2245,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@replayio/test-utils@npm:^0.1.0":
-  version: 0.1.0
-  resolution: "@replayio/test-utils@npm:0.1.0"
+"@replayio/test-utils@npm:^0.1.1":
+  version: 0.1.1
+  resolution: "@replayio/test-utils@npm:0.1.1"
   dependencies:
-    "@replayio/replay": ^0.9.4
+    "@replayio/replay": ^0.9.5
     node-fetch: ^2.6.7
     uuid: ^8.3.2
-  checksum: 1ae70b45de0d02808023a01d8fc6c70b7860b5f0974234ac006ff9ace15876cfb8506e5f22e4b077dcd1221df0a08f4b6c506339c77db66714377e551f9f19f5
+  checksum: 704ba7e690782e65d2ed297da2af812316677f41bbb4bee5f06a4ee5d2ae060703d6fff1d74f955a82932c4a90bafc87f61732556b2d700f8fa2c2b210ba68a6
   languageName: node
   linkType: hard
 
@@ -6631,7 +6631,7 @@ __metadata:
     "@graphql-yoga/node": ^2.8.0
     "@kitql/vite-plugin-watch-and-run": ^0.4.0
     "@playwright/test": ^1.21.0
-    "@replayio/playwright": ^0.2.24
+    "@replayio/playwright": ^0.2.25
     "@sveltejs/adapter-auto": 1.0.0-next.55
     "@sveltejs/kit": 1.0.0-next.370
     "@typescript-eslint/eslint-plugin": ^5.10.1
